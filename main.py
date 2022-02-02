@@ -6,6 +6,7 @@ import sys
 
 if __name__ == '__main__':
 
+
     option = input("Select car by brand or by plate ('brand'/'plate')\n") or 'brand'
 
     
@@ -15,7 +16,18 @@ if __name__ == '__main__':
         car = get_car_by_plate(selected_plate)
         export_car_to_csv(car, selected_plate)
     elif option == 'brand':
+        # get list of brands
+        with open("cache/brands.txt", "r") as file:
+            brand_list = file.readlines()
+            brand_list_clean = [brand.replace("\n", "") for brand in brand_list]
+            
+        
+        
         print(f"\n selected {option}\n")
+        print("\nChoose one of the following brands\n")
+        brand_selection_str = "\n".join(brand_list_clean)
+        print(brand_selection_str)
+        print("="*15)
         selected_brand = input("Choose Brand:\n") or "TESLA"
         cars_list = get_car_by_brand(selected_brand)
         cars_df = conv_from_list(cars_list)
