@@ -1,14 +1,15 @@
 import os
+import pandas as pd
 
-
-def export_car_to_csv(df, kenteken):
+def export_car_to_csv(car_dict, kenteken):
     current_export_files_folders = os.listdir("export")
 
     if kenteken not in current_export_files_folders:
         print(f"Created folder {kenteken}")
-        os.mkdir(f"merk{kenteken}")
+        os.mkdir(f"export/{kenteken}")
 
-    df.to_csv(f"export/{kenteken}/exported_car_{kenteken}.csv", sep=";", index=False)
+    car_df = pd.DataFrame([car_dict])
+    car_df.to_csv(f"export/{kenteken}/exported_car_{kenteken}.csv", sep=";", index=False)
     print(f"Exported car {kenteken} 🗄 ")
 
 
