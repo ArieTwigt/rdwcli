@@ -12,8 +12,8 @@ Create virtual environment:
 
 Activate virtualenv:
 
-`venv\Scripts\activate` (Windows)
-`source venv/bin/activate`  (OSC)
+* `venv\Scripts\activate` (Windows)
+* `source venv/bin/activate`  (OSC)
 
 Install required pacakges
 
